@@ -4,90 +4,55 @@
 # 从yum仓库查找openjdk
 [root@VM-0-13-centos zookeeper]#yum search java | grep jdk
 ```
-```bash
-ldapjdk-javadoc.noarch : Javadoc for ldapjdk
-java-1.6.0-openjdk.x86_64 : OpenJDK Runtime Environment
-java-1.6.0-openjdk-demo.x86_64 : OpenJDK Demos
-java-1.6.0-openjdk-devel.x86_64 : OpenJDK Development Environment
-java-1.6.0-openjdk-javadoc.x86_64 : OpenJDK API Documentation
-java-1.6.0-openjdk-src.x86_64 : OpenJDK Source Bundle
-java-1.7.0-openjdk.x86_64 : OpenJDK Runtime Environment
-java-1.7.0-openjdk-accessibility.x86_64 : OpenJDK accessibility connector
-java-1.7.0-openjdk-demo.x86_64 : OpenJDK Demos
-java-1.7.0-openjdk-devel.x86_64 : OpenJDK Development Environment
-java-1.7.0-openjdk-headless.x86_64 : The OpenJDK runtime environment without
-java-1.7.0-openjdk-javadoc.noarch : OpenJDK API Documentation
-java-1.7.0-openjdk-src.x86_64 : OpenJDK Source Bundle
-java-1.8.0-openjdk.i686 : OpenJDK Runtime Environment 8
-java-1.8.0-openjdk.x86_64 : OpenJDK Runtime Environment 8
-java-1.8.0-openjdk-accessibility.i686 : OpenJDK accessibility connector
-java-1.8.0-openjdk-accessibility.x86_64 : OpenJDK accessibility connector
-java-1.8.0-openjdk-demo.i686 : OpenJDK Demos 8
-java-1.8.0-openjdk-demo.x86_64 : OpenJDK Demos 8
-java-1.8.0-openjdk-devel.i686 : OpenJDK Development Environment 8
-java-1.8.0-openjdk-devel.x86_64 : OpenJDK Development Environment 8
-java-1.8.0-openjdk-headless.i686 : OpenJDK Headless Runtime Environment 8
-java-1.8.0-openjdk-headless.x86_64 : OpenJDK Headless Runtime Environment 8
-java-1.8.0-openjdk-javadoc.noarch : OpenJDK 8 API documentation
-java-1.8.0-openjdk-javadoc-zip.noarch : OpenJDK 8 API documentation compressed
-java-1.8.0-openjdk-src.i686 : OpenJDK Source Bundle 8
-java-1.8.0-openjdk-src.x86_64 : OpenJDK Source Bundle 8
-...
-```
+
 ```bash
 # 安装openjdk
 [root@VM-0-13-centos zookeeper]#yum install java-1.8.0-openjdk -y
 ```
-```bash
-Installed:
-...
-  java-1.8.0-openjdk.x86_64 1:1.8.0.275.b01-0.el7_9
-...                                        
 
-Complete!
-```
 ```bash
 # 验证openjdk安装
 [root@VM-0-13-centos ~]# java -version
 ```
-```bash
-openjdk version "1.8.0_275"
-OpenJDK Runtime Environment (build 1.8.0_275-b01)
-OpenJDK 64-Bit Server VM (build 25.275-b01, mixed mode)
-```
+
 ```bash
  # 下载zookeeper软件包
 [root@VM-0-13-centos ~]# wget https://downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz
 ```
+
 ```bash
 # 解压zookeeper
 [root@VM-0-13-centos ~]# tar -zxvf apache-zookeeper-3.6.2-bin.tar.gz
 ```
+
 ```bash
 # 将zookeeper移动至 /usr/local/bin 统一管理
 [root@VM-0-13-centos ~]# mv apache-zookeeper-3.6.2-bin /usr/local/bin/zookeeper 
 ```
+
 ```bash
 # 切换目录至 /usr/local/bin
 [root@VM-0-13-centos bin]# cd /usr/local/bin/
 ```
+
 ```bash
 # 备份 zookeeper 初始配置文件
 [root@VM-0-13-centos bin]# cp zookeeper/conf/zoo_sample.cfg zookeeper/conf/zoo_sample.cfg.bak
 ```
+
 ```bash
 # 创建 zookeeper 配置文件
 [root@VM-0-13-centos bin]# mv zookeeper/conf/zoo_sample.cfg zookeeper/conf/zoo.cfg
 ```
+
 ```bash
 # 新建 zookeeper 数据目录
 [root@VM-0-13-centos bin]# mkdir zookeeper/data
 ```
+
 ```bash
 # 修改 zookeeper 配置中的 dataDir 至 /usr/local/bin/zookeeper/data
 [root@VM-0-13-centos bin]# vim /zookeeper/conf/zoo.cfg
-```
-```bash
 
 #tickTime: zookeeper中使用的基本时间单位, 毫秒值.
 # The number of milliseconds of each tick
@@ -142,24 +107,27 @@ server.1=Server1IP:2888:3888
 server.2=Server2IP:2888:3888
 server.3=Server3IP:2888:3888
 ```
+
 ```bash
 # 设置 Server1 的服务器 ID
 [root@VM-0-13-centos zookeeper]# echo 1 > data/myid
 ```
+
 ```bash
 # 设置 Server2 的服务器 ID
-[root@VM-0-13-centos zookeeper]# echo 2 > data/myid
+[root@VM-0-14-centos zookeeper]# echo 2 > data/myid
 ```
+
 ```bash
 # 设置 Server3 的服务器 ID
-[root@VM-0-13-centos zookeeper]# echo 3 > data/myid
+[root@VM-0-15-centos zookeeper]# echo 3 > data/myid
 ```
+
 ```bash
 # 分别启动三台服务器上的 zookeeper
 [root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh start
 # zookeeper/bin/zkServer.sh start-foreground 前台启动，用于查看实时 log
-```
-```bash
+
 /usr/bin/java
 ZooKeeper JMX enabled by default
 Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
