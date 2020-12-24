@@ -147,9 +147,6 @@ Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
 Starting zookeeper ... STARTED
 ```
 ```bash
-
-```
-```bash
 # 查看 zookeeper 运行状态
 [root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh status
 ```
