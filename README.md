@@ -119,14 +119,22 @@ OpenJDK 64-Bit Server VM (build 25.275-b01, mixed mode)
 [root@VM-0-13-centos bin]# vim /zookeeper/conf/zoo.cfg
 ```
 ```bash
+
+#tickTime: zookeeper中使用的基本时间单位, 毫秒值.
 # The number of milliseconds of each tick
 tickTime=2000
+
+# ZooKeeper集群模式下包含多个zk进程，其中一个进程为leader，余下的进程为follower。
+# 当follower最初与leader建立连接时，它们之间会传输相当多的数据，尤其是follower的数据落后leader很多。initLimit参数配置初始化连接时, follower和leader之间的最长心跳时间。
 # The number of ticks that the initial 
 # synchronization phase can take
 initLimit=10
+
+# 配置follower和leader之间发送消息，请求和应答的最大时间长度。
 # The number of ticks that can pass between 
 # sending a request and getting an acknowledgement
 syncLimit=5
+
 # the directory where the snapshot is stored.
 # do not use /tmp for storage, /tmp here is just 
 # example sakes.
