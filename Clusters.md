@@ -1,4 +1,4 @@
-### Zookeeper 单节点安装部署
+### Zookeeper 集群安装部署
 
 ```bash
 # 从yum仓库查找openjdk
@@ -135,9 +135,27 @@ clientPort=2181
 #metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider
 #metricsProvider.httpPort=7000
 #metricsProvider.exportJvmInfo=true
+
+# 集群模式下所有主机使用相同配置
+# 2888原子广播端口，3888选举端口
+server.1=Server1IP:2888:3888
+server.2=Server2IP:2888:3888
+server.3=Server3IP:2888:3888
 ```
 ```bash
-# 启动 zookeeper
+# 设置 Server1 的服务器 ID
+[root@VM-0-13-centos zookeeper]# echo 1 > data/myid
+```
+```bash
+# 设置 Server2 的服务器 ID
+[root@VM-0-13-centos zookeeper]# echo 2 > data/myid
+```
+```bash
+# 设置 Server3 的服务器 ID
+[root@VM-0-13-centos zookeeper]# echo 3 > data/myid
+```
+```bash
+# 分别启动三台服务器上的 zookeeper
 [root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh start
 # zookeeper/bin/zkServer.sh start-foreground 前台启动，用于查看实时 log
 ```
@@ -146,15 +164,4 @@ clientPort=2181
 ZooKeeper JMX enabled by default
 Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
 Starting zookeeper ... STARTED
-```
-```bash
-# 查看 zookeeper 运行状态
-[root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh status
-```
-```bash
-/usr/bin/java
-ZooKeeper JMX enabled by default
-Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
-Client port found: 2181. Client address: localhost. Client SSL: false.
-Mode: standalone
 ```
