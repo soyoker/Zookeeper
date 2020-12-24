@@ -1,5 +1,6 @@
 ### Zookeeper 单节点安装部署
 
+```bash
 # 从yum仓库查找openjdk
 [root@VM-0-13-centos zookeeper]#yum search java | grep jdk
 ```
