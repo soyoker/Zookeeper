@@ -33,6 +33,8 @@ ZooKeeper数据模型的结构与Unix文件系统很类似，整体上可以看�
 -   环境准备（安装openjdk，下载zookeeper软件包）
 ```bash
 [root@VM-0-13-centos zookeeper]#yum search java | grep jdk
+```
+```bash
 ldapjdk-javadoc.noarch : Javadoc for ldapjdk
 java-1.6.0-openjdk.x86_64 : OpenJDK Runtime Environment
 java-1.6.0-openjdk-demo.x86_64 : OpenJDK Demos
@@ -61,33 +63,48 @@ java-1.8.0-openjdk-javadoc-zip.noarch : OpenJDK 8 API documentation compressed
 java-1.8.0-openjdk-src.i686 : OpenJDK Source Bundle 8
 java-1.8.0-openjdk-src.x86_64 : OpenJDK Source Bundle 8
 ...
-
+```
+```bash
 [root@VM-0-13-centos zookeeper]#yum install java-1.8.0-openjdk -y
+```
+```bash
 Installed:
 ...
   java-1.8.0-openjdk.x86_64 1:1.8.0.275.b01-0.el7_9                                                                             
 ...                                        
 
 Complete!
-
+```
+```bash
 [root@VM-0-13-centos ~]# java -version
+```
+```bash
 openjdk version "1.8.0_275"
 OpenJDK Runtime Environment (build 1.8.0_275-b01)
 OpenJDK 64-Bit Server VM (build 25.275-b01, mixed mode)
-
+```
+```bash
 [root@VM-0-13-centos ~]# wget https://downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz
-
+```
+```bash
 [root@VM-0-13-centos ~]# tar -zxvf apache-zookeeper-3.6.2-bin.tar.gz
-
+```
+```bash
 [root@VM-0-13-centos ~]# mv apache-zookeeper-3.6.2-bin /usr/local/bin/zookeeper
-
+```
+```bash
 [root@VM-0-13-centos ~]# cp /usr/local/bin/zookeeper/conf/zoo_sample.cfg /usr/local/bin/zookeeper/conf/zoo_sample.cfg.bak
-
+```
+```bash
 [root@VM-0-13-centos ~]# mv /usr/local/bin/zookeeper/conf/zoo_sample.cfg /usr/local/bin/zookeeper/conf/zoo.cfg
-
+```
+```bash
 [root@VM-0-13-centos ~]# mkdir /usr/local/bin/zookeeper/data
-
+```
+```bash
 [root@VM-0-13-centos zookeeper]#vim /usr/local/bin/zookeeper/conf/zoo.cfg
+```
+```bash
 # The number of milliseconds of each tick
 tickTime=2000
 # The number of ticks that the initial 
@@ -123,16 +140,23 @@ clientPort=2181
 #metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider
 #metricsProvider.httpPort=7000
 #metricsProvider.exportJvmInfo=true
-
+```
+```bash
 [root@VM-0-13-centos zookeeper]# ./bin/zkServer.sh start
+```
+```bash
 /usr/bin/java
 ZooKeeper JMX enabled by default
 Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
 Starting zookeeper ... STARTED
-
+```
+```bash
 [root@VM-0-13-centos zookeeper]# ./bin/zkServer.sh status
+```
+```bash
 /usr/bin/java
 ZooKeeper JMX enabled by default
 Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
 Client port found: 2181. Client address: localhost. Client SSL: false.
 Mode: standalone
+```
