@@ -105,6 +105,7 @@ clientPort=2181
 # 启动 zookeeper
 [root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh start
 # zookeeper/bin/zkServer.sh start-foreground 前台启动，用于查看实时 log
+
 /usr/bin/java
 ZooKeeper JMX enabled by default
 Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
@@ -114,6 +115,7 @@ Starting zookeeper ... STARTED
 ```bash
 # 查看 zookeeper 运行状态
 [root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh status
+
 /usr/bin/java
 ZooKeeper JMX enabled by default
 Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
