@@ -32,7 +32,7 @@ ZooKeeper数据模型的结构与Unix文件系统很类似，整体上可以看�
 #### 单机节点：
 -   环境准备（安装openjdk，下载zookeeper软件包）
 ```bash
-[root@VM-0-13-centos zookeeper]#yum search java | grep jdk
+[root@VM-0-13-centos zookeeper]#yum search java | grep jdk  /从yum仓库查找openjdk
 ```
 ```bash
 ldapjdk-javadoc.noarch : Javadoc for ldapjdk
@@ -65,17 +65,19 @@ java-1.8.0-openjdk-src.x86_64 : OpenJDK Source Bundle 8
 ...
 ```
 ```bash
+#安装openjdk
 [root@VM-0-13-centos zookeeper]#yum install java-1.8.0-openjdk -y
 ```
 ```bash
 Installed:
 ...
-  java-1.8.0-openjdk.x86_64 1:1.8.0.275.b01-0.el7_9                                                                             
+  java-1.8.0-openjdk.x86_64 1:1.8.0.275.b01-0.el7_9
 ...                                        
 
 Complete!
 ```
 ```bash
+#验证openjdk安装
 [root@VM-0-13-centos ~]# java -version
 ```
 ```bash
@@ -84,25 +86,36 @@ OpenJDK Runtime Environment (build 1.8.0_275-b01)
 OpenJDK 64-Bit Server VM (build 25.275-b01, mixed mode)
 ```
 ```bash
+ #下载zookeeper软件包
 [root@VM-0-13-centos ~]# wget https://downloads.apache.org/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz
 ```
 ```bash
+#解压zookeeper
 [root@VM-0-13-centos ~]# tar -zxvf apache-zookeeper-3.6.2-bin.tar.gz
 ```
 ```bash
-[root@VM-0-13-centos ~]# mv apache-zookeeper-3.6.2-bin /usr/local/bin/zookeeper
+#将zookeeper移动至 /usr/local/bin 统一管理
+[root@VM-0-13-centos ~]# mv apache-zookeeper-3.6.2-bin /usr/local/bin/zookeeper 
 ```
 ```bash
-[root@VM-0-13-centos ~]# cp /usr/local/bin/zookeeper/conf/zoo_sample.cfg /usr/local/bin/zookeeper/conf/zoo_sample.cfg.bak
+#切换目录至 /usr/local/bin
+[root@VM-0-13-centos bin]# cd /usr/local/bin/
 ```
 ```bash
-[root@VM-0-13-centos ~]# mv /usr/local/bin/zookeeper/conf/zoo_sample.cfg /usr/local/bin/zookeeper/conf/zoo.cfg
+#备份 zookeeper 初始配置文件
+[root@VM-0-13-centos bin]# cp zookeeper/conf/zoo_sample.cfg zookeeper/conf/zoo_sample.cfg.bak
 ```
 ```bash
-[root@VM-0-13-centos ~]# mkdir /usr/local/bin/zookeeper/data
+#创建 zookeeper 配置文件
+[root@VM-0-13-centos bin]# mv zookeeper/conf/zoo_sample.cfg zookeeper/conf/zoo.cfg
 ```
 ```bash
-[root@VM-0-13-centos zookeeper]#vim /usr/local/bin/zookeeper/conf/zoo.cfg
+#新建 zookeeper 数据目录
+[root@VM-0-13-centos bin]# mkdir zookeeper/data
+```
+```bash
+#修改 zookeeper 配置中的 dataDir 至 /usr/local/bin/zookeeper/data
+[root@VM-0-13-centos bin]# vim /zookeeper/conf/zoo.cfg
 ```
 ```bash
 # The number of milliseconds of each tick
@@ -142,7 +155,8 @@ clientPort=2181
 #metricsProvider.exportJvmInfo=true
 ```
 ```bash
-[root@VM-0-13-centos zookeeper]# ./bin/zkServer.sh start
+#启动 zookeeper
+[root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh start
 ```
 ```bash
 /usr/bin/java
@@ -151,7 +165,8 @@ Using config: /usr/local/bin/zookeeper/bin/../conf/zoo.cfg
 Starting zookeeper ... STARTED
 ```
 ```bash
-[root@VM-0-13-centos zookeeper]# ./bin/zkServer.sh status
+#查看 zookeeper 运行状态
+[root@VM-0-13-centos bin]# zookeeper/bin/zkServer.sh status
 ```
 ```bash
 /usr/bin/java
