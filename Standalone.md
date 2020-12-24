@@ -2,12 +2,12 @@
 
 ```bash
 # 从yum仓库查找openjdk
-[root@VM-0-13-centos zookeeper]#yum search java | grep jdk
+[root@VM-0-13-centos ~]# yum search java | grep jdk
 ```
 
 ```bash
 # 安装openjdk
-[root@VM-0-13-centos zookeeper]#yum install java-1.8.0-openjdk -y
+[root@VM-0-13-centos ~]# yum install java-1.8.0-openjdk -y
 ```
 
 ```bash
