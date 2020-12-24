@@ -70,8 +70,8 @@ java-1.8.0-openjdk-src.x86_64 : OpenJDK Source Bundle 8
 ```bash
 Installed:
 ...
-  java-1.8.0-openjdk.x86_64 1:1.8.0.275.b01-0.el7_9                                                                             
-...                                        
+  java-1.8.0-openjdk.x86_64 1:1.8.0.275.b01-0.el7_9
+...
 
 Complete!
 ```
