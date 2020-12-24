@@ -124,21 +124,25 @@ OpenJDK 64-Bit Server VM (build 25.275-b01, mixed mode)
 # The number of milliseconds of each tick
 tickTime=2000
 
-# ZooKeeper集群模式下包含多个zk进程，其中一个进程为leader，余下的进程为follower。
-# 当follower最初与leader建立连接时，它们之间会传输相当多的数据，尤其是follower的数据落后leader很多。initLimit参数配置初始化连接时, follower和leader之间的最长心跳时间。
+# ZooKeeper 集群模式下包含多个zk进程，其中一个进程为 leader ，余下的进程为 follower。
+# 当 follower 最初与 leader 建立连接时，它们之间会传输相当多的数据，尤其是 follower 的数据落后 leader 很多。
+# initLimit 参数配置初始化连接时, follower 和 leader 之间的最长心跳时间。
 # The number of ticks that the initial 
 # synchronization phase can take
 initLimit=10
 
-# 配置follower和leader之间发送消息，请求和应答的最大时间长度。
+# 配置 follower 和 leader 之间发送消息，请求和应答的最大时间长度。
 # The number of ticks that can pass between 
 # sending a request and getting an acknowledgement
 syncLimit=5
 
+# zookeeper 数据目录
 # the directory where the snapshot is stored.
 # do not use /tmp for storage, /tmp here is just 
 # example sakes.
 dataDir=/usr/local/bin/zookeeper/data
+
+# zookeeper 服务默认使用的端口号
 # the port at which the clients will connect
 clientPort=2181
 # the maximum number of client connections.
